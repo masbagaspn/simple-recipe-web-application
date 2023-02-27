@@ -21,8 +21,8 @@ function Information() {
     
     useEffect(() => {
         getInformationById(id)
-    }, [id])
-    console.log(information)
+    }, [])
+    
   return (
     !isLoading &&
     <section className='w-full flex flex-col gap-4'>
