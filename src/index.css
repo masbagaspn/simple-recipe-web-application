@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components{
+  .page-title{
+    @apply font-bold mb-2 text-2xl
+  }
+  .category{
+    @apply w-fit h-fit flex items-center gap-1 pl-4 pr-5 pt-2 pb-2.5 rounded-full text-xs cursor-pointer not-italic no-underline
+  }
+  .category-inactive{
+    @apply border-[1px] border-black text-black
+  }
+  .category-active{
+    @apply bg-black text-white border-[1px] border-black
+  }
+}
+
+@layer base{
+  a {
+    @apply underline underline-offset-2
+  }
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
