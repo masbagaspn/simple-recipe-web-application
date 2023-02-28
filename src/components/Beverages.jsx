@@ -36,7 +36,7 @@ export default function Beverages({ media }) {
                     arrows: false,
                     pagination: false,
                     width: '100%',
-                    height: utils.sliderHeightPopular(media, 6),
+                    height: utils.sliderHeightPopular(media, 8),
                     padding: { top: '1rem', bottom: '1rem' },
                     drag: 'free',
                     gap: '1.25rem',
