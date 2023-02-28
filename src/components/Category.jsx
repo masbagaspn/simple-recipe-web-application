@@ -7,7 +7,7 @@ function Category() {
     const { state, dispatch } = useContext(HeaderContext)
     
     return (
-        <nav className='flex gap-4 mb-6 items-center'>
+        <nav className='flex flex-wrap gap-4 mb-6 items-center'>
             <NavLink 
                 to={'/'}
                 onClick={() => dispatch({ type: 'SELECT_CUISINE_CATEGORY', payload: 'popular' })}

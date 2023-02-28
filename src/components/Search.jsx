@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import clsx from 'clsx'
 import { HiOutlineSearch } from 'react-icons/hi'
 import { useNavigate } from 'react-router-dom'
 import { HeaderContext } from './Header'
@@ -19,10 +20,11 @@ function Search() {
 
   return (
     <form 
-      className={
-        `w-fit h-fit flex items-center gap-2.5 pl-4 pr-5 pt-2 pb-2.5 
-        rounded-full text-xs cursor-pointer border-[1px] border-black`
-      }
+      className={clsx(
+        'h-fit flex items-center gap-2.5 pl-4 pr-5 pt-1.5 pb-2 rounded-full text-xs cursor-pointer border-[1px] border-black',
+        'mobile:w-full',
+        'tablets:w-fit'
+      )}
       onSubmit={(e) => handleSubmit(e)}
     >
         <HiOutlineSearch />

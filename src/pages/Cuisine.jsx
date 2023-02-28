@@ -1,3 +1,4 @@
+import clsx from 'clsx'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import CardRecipe from '../components/cards/CardRecipe'
@@ -30,9 +31,19 @@ function Cuisine() {
     }, [cuisine])
     
     return (
-        <section className='w-full h-full flex flex-col gap-2 pb-4'>
+        <section className={clsx(
+                'w-full h-full flex flex-col gap-2 pb-8',
+                'px-4 tablets:px-8 laptop:px-10 desktop:px-12'
+            )}
+        >
             <h1 className='page-title'>{`${utils.capitalize(cuisine)} Cuisine`}</h1>
-            <div className='w-full h-full grid grid-cols-4 grid-rows-3 gap-[1.5rem]'>
+            <div className={clsx(
+                'w-full h-full grid',
+                'grid-cols-1 gap-4',
+                'tablets:grid-cols-2',
+                'laptop:grid-cols-3',
+                'desktop:grid-cols-4'
+            )}>
                 {
                     foods.map((food, index) => (
                         <CardRecipe food={food} key={index} />

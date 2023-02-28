@@ -9,7 +9,7 @@
     @apply font-bold mb-2 text-2xl
   }
   .category{
-    @apply w-fit h-fit flex items-center gap-1 pl-4 pr-5 pt-2 pb-2.5 rounded-full text-xs cursor-pointer not-italic no-underline
+    @apply w-fit h-fit flex items-center gap-1 rounded-full text-xs cursor-pointer not-italic no-underline pl-2 pr-3 pt-1 pb-1.5 laptop:pl-4 laptop:pr-5 laptop:pt-2 laptop:pb-2.5
   }
   .category-inactive{
     @apply border-[1px] border-black text-black

@@ -5,7 +5,9 @@ import Pages from "./pages/Pages"
 function App() {
 
   return (
-    <main className="max-w-[100vw] w-full max-h-[100vh] h-screen py-10 px-20 overflow-x-hidden text-raleway">
+    <main 
+      className={'max-w-[100vw] w-full max-h-[100vh] h-screen overflow-x-hidden text-raleway'}
+    >
       <BrowserRouter>
         <Header />
         <Pages />

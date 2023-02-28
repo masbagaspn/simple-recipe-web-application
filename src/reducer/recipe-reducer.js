@@ -1,6 +1,6 @@
 export const recipeState = {
     query: '',
-    selectedCuisine: 'popular'
+    selected: 'popular'
 }
 
 export const recipeReducer = (state, action) => {

@@ -7,59 +7,48 @@ import utils from '../utils/utils'
 function Information() {
     const [isLoading, setIsLoading] = useState(true)
     const [information, setInformation] = useState({})
-    const [selectedView, setSelectedView] = useState('ingredients')
 
     const { id } = useParams()
 
     const getInformationById = async(id) => {
         setIsLoading(true)
-        const response = await services.getRecipeInformationById(id)
-        const { data } = response
-        setInformation(data)
-        setIsLoading(false)
-    }
+
+        const check = localStorage.getItem('details')
+
+        if(check){
+            setInformation(JSON.parse(check))
+            setIsLoading(false)
+        } else {
+            const response = await services.getRecipeInformationById(id)
+            const { data } = response
     
+            localStorage.setItem('details', JSON.stringify(data))
+            setInformation(data)
+            setIsLoading(false)
+        }
+    }
+    console.log(information)
     useEffect(() => {
         getInformationById(id)
     }, [])
     
   return (
     !isLoading &&
-    <section className='w-full flex flex-col gap-4'>
+    <section className='w-full flex flex-col gap-10 px-8 py-4 tablets:px-10 tablets:py-6 laptop:px-12 laptop:py-8 desktop:px-16'>
         <div className='flex flex-col items-start rounded-md overflow-hidden gap-2'>
-            <img className='w-full h-96 object-cover' src={information.image} alt={information.title} />
+            <img className='w-full h-48 tablets:h-52 laptop:h-60 desktop:h-80 object-cover rounded-md' src={information.image} alt={information.title} />
             <span className='text-left text-sm'>
                 {`Source: `}
                 <a href={information.sourceUrl}>{information.sourceName}</a>
             </span>
         </div>
-        <div className='w-full h-fit'>
-            <h1 className='w-3/4 page-title'>{information.title}</h1>
-            <p className='indent-4' dangerouslySetInnerHTML={{ __html: information.summary }}></p>
+        <div className='w-full h-fit flex flex-col laptop:flex-row gap-6'>
+            <h1 className='w-full laptop:w-1/4 h-fit pb-4 page-title border-b-2 laptop:border-0 border-black'>{information.title}</h1>
+            <p className='w-full laptop:w-3/4 text-justify indent-4' dangerouslySetInnerHTML={{ __html: information.summary }}></p>
         </div>
-        {/* <div className='w-full flex justify-center items-center gap-4 my-4'>
-            <button 
-                onClick={() => setSelectedView('ingredients')}
-                className={
-                    `category px-4 ${selectedView === 'ingredients' ? 'category-active' : 'category-inactive'}`
-                }
-            >
-                <GiFruitBowl />
-                Ingredients
-            </button>
-            <button 
-                onClick={() => setSelectedView('instructions')}
-                className={
-                    `category px-4 ${selectedView === 'instructions' ? 'category-active' : 'category-inactive'}`
-                }
-            >
-                <GiSpellBook />
-                Instructions
-            </button>
-        </div> */}
-        <div>
-            <h2 className='page-title py-4'>Ingredients</h2>
-            <ul className='w-full grid grid-cols-4 gap-2'>
+        <div className='w-full flex flex-col laptop:flex-row gap-6'>
+            <h2 className='w-full laptop:w-1/4 h-fit pb-4 page-title border-b-2 laptop:border-0 border-black'>Ingredients</h2>
+            <ul className='w-full laptop:w-3/4 grid grid-cols-2 laptop:grid-cols-3 gap-2'>
                 {
                     information.extendedIngredients.map((ingredient, index) => (
                         <li key={index}>
@@ -71,9 +60,9 @@ function Information() {
                 }
             </ul>
         </div>
-        <div>
-            <h2 className='page-title py-4'>Instructions</h2>
-            <ol className='list-decimal flex flex-col gap-2 ml-6'>
+        <div className='w-full flex flex-col laptop:flex-row gap-6'>
+            <h2 className='w-full laptop:w-1/4 h-fit pb-4 page-title border-b-2 laptop:border-0 border-black'>Instructions</h2>
+            <ol className='w-full laptop:w-3/5 list-decimal flex flex-col gap-2 ml-6'>
                 {
                     information.instructions.split('.').map((string, index) => (
                         string !== '' && <li key={index}>{string}</li>
@@ -81,7 +70,6 @@ function Information() {
                 }
             </ol>
         </div>
-        <span className='w-full text-center text-2xl font-semibold mt-10'>Hope you like it!</span>
     </section>
   )
 }

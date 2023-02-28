@@ -17,8 +17,8 @@ export default function Beverages() {
             const query = `type=beverage`
             const response = await services.getRandomRecipes(query)
             
-            const { results } = response.data
-            localStorage.setItem('beverage', JSON.stringify(utils.changeImageArray(results)))
+            const { recipes } = response.data
+            localStorage.setItem('beverage', JSON.stringify(utils.changeImageArray(recipes)))
             setBeverage(response.data.recipes)
         }
     }

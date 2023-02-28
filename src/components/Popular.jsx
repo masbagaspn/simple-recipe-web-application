@@ -16,9 +16,9 @@ export default function Popular() {
         } else {
             const response = await services.getRandomRecipes()
 
-            const { results } = response.data
-
-            localStorage.setItem('popular', JSON.stringify(utils.changeImageArray(results)))
+            const { recipes } = response.data
+            
+            localStorage.setItem('popular', JSON.stringify(utils.changeImageArray(recipes)))
             setPopular(response.data.recipes)
         }
     }
