@@ -15,7 +15,7 @@ export default function CardRandomRecipe({data}) {
                     className='absolute top-0 w-full h-full bg-black/40 mobile:opacity-1 laptop:opacity-0 z-10'
                     whileHover={{ opacity: 100 }}
                 >
-                    <h3 className='font-semibold w-2/3 absolute bottom-4 left-4 text-white text-xs tablets:text-md laptop:text-base'>{data.title}</h3>
+                    <h3 className='font-semibold w-2/3 absolute bottom-2 left-2 laptop:bottom-4 laptop:left-4 text-white text-xs tablets:text-md laptop:text-base'>{data.title}</h3>
                 </motion.div>
             </article>
         </NavLink>

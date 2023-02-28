@@ -7,7 +7,7 @@ import utils from '../utils/utils'
 
 export default function Popular({ media }) {
     const [popular, setPopular] = useState([])
-
+    
     const getPopulars = async() => {
         const check = localStorage.getItem('popular')
         
@@ -36,7 +36,7 @@ export default function Popular({ media }) {
                     arrows: false,
                     pagination: false,
                     width: '100%',
-                    height: utils.sliderHeightPopular(media, 8),
+                    height: utils.sliderHeightPopular(media, 10),
                     padding: { top: '1rem', bottom: '1rem' },
                     drag: 'free',
                     gap: '1.25rem',

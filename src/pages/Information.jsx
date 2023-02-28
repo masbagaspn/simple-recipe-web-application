@@ -12,22 +12,13 @@ function Information() {
 
     const getInformationById = async(id) => {
         setIsLoading(true)
-
-        const check = localStorage.getItem('details')
-
-        if(check){
-            setInformation(JSON.parse(check))
-            setIsLoading(false)
-        } else {
-            const response = await services.getRecipeInformationById(id)
-            const { data } = response
-    
-            localStorage.setItem('details', JSON.stringify(data))
-            setInformation(data)
-            setIsLoading(false)
-        }
+        
+        const response = await services.getRecipeInformationById(id)
+        const { data } = response
+        setInformation(data)
+        setIsLoading(false)
     }
-    console.log(information)
+
     useEffect(() => {
         getInformationById(id)
     }, [])
@@ -62,13 +53,7 @@ function Information() {
         </div>
         <div className='w-full flex flex-col laptop:flex-row gap-6'>
             <h2 className='w-full laptop:w-1/4 h-fit pb-4 page-title border-b-2 laptop:border-0 border-black'>Instructions</h2>
-            <ol className='w-full laptop:w-3/5 list-decimal flex flex-col gap-2 ml-6'>
-                {
-                    information.instructions.split('.').map((string, index) => (
-                        string !== '' && <li key={index}>{string}</li>
-                    ))
-                }
-            </ol>
+            <span className='w-full laptop:w-3/4 h-fit list-decimal' dangerouslySetInnerHTML={{ __html: information.instructions }} />
         </div>
     </section>
   )
