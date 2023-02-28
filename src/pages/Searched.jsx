@@ -1,3 +1,4 @@
+import clsx from 'clsx'
 import React, { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import CardRecipe from '../components/cards/CardRecipe'
@@ -13,7 +14,7 @@ function Searched() {
     const getRecipesBySeachQuery = async(query) => {
         const response = await services.getRecipesByQuery(query)
         const { results } = response.data
-        setFoods(utils.changeImageArray(results))
+        setFoods(results)
     }
 
     useEffect(() => {
@@ -26,9 +27,13 @@ function Searched() {
 
 
   return (
-    <section className='w-full h-full flex flex-col gap-2 pb-4'>
-        <h1 className='page-title'>{`Search Title: ${title}`}</h1>
-        <div className='w-full h-full grid grid-cols-4 grid-rows-3 gap-[1.5rem]'>
+    <section className={clsx(
+            'w-full h-full flex flex-col gap-2 pb-8',
+            'section-padding'
+        )}
+    >
+        <h1 className='page-title'>{`Search: ${title}`}</h1>
+        <div className='w-full h-full grid responsive-grid gap-[1.5rem]'>
             {
                 foods.map((food, index) => (
                     <CardRecipe food={food} key={index} />

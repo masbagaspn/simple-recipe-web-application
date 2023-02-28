@@ -1,5 +1,6 @@
 import clsx from 'clsx'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useReducer, useState } from 'react'
+import { recipeState, recipeReducer } from '../reducer/recipe-reducer'
 import { useParams } from 'react-router-dom'
 import CardRecipe from '../components/cards/CardRecipe'
 import services from '../services/api'
@@ -7,7 +8,8 @@ import utils from '../utils/utils'
 
 function Cuisine() {
     const [foods, setFoods] = useState([])
-
+    const [state, dispatch] = useReducer(recipeReducer, recipeState)
+    
     const { cuisine } = useParams()
 
     const getSelectedCuisineRecipe = async() => {
@@ -21,7 +23,7 @@ function Cuisine() {
 
             const { results } = response.data
             
-            localStorage.setItem(`${cuisine}`, JSON.stringify(utils.changeImageArray(results)))
+            localStorage.setItem(`${cuisine}`, JSON.stringify(results))
             setFoods(results)
         }
     }
@@ -33,16 +35,13 @@ function Cuisine() {
     return (
         <section className={clsx(
                 'w-full h-full flex flex-col gap-2 pb-8',
-                'px-4 tablets:px-8 laptop:px-10 desktop:px-12'
+                'section-padding'
             )}
         >
             <h1 className='page-title'>{`${utils.capitalize(cuisine)} Cuisine`}</h1>
             <div className={clsx(
                 'w-full h-full grid',
-                'grid-cols-1 gap-4',
-                'tablets:grid-cols-2',
-                'laptop:grid-cols-3',
-                'desktop:grid-cols-4'
+                'responsive-grid',
             )}>
                 {
                     foods.map((food, index) => (

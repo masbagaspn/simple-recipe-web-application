@@ -2,24 +2,36 @@ const capitalize = (string) => {
     return string.at(0).toUpperCase() + string.slice(1)
 }
 
-const changeImageSize = (url) => {
-    const replaceUrl = url.replace('312x231', '500x500')
-    return replaceUrl
+const slidePerPage = (breakpoint, initial) => {
+    switch(breakpoint){
+        case 'tablet':
+            return initial + 1
+        case 'laptop':
+            return initial + 2
+        case 'desktop':
+            return initial + 3
+        default:
+            return initial
+    }
 }
 
-const changeImageProp = (obj) => {
-    return { ...obj, image: changeImageSize(obj.image) }
-}
-
-const changeImageArray = (arr) => {
-    return arr.map(item => ({ ...item, image: changeImageSize(item.image) }))
+const sliderHeightPopular = (breakpoint, initial) => {
+    switch(breakpoint){
+        case 'tablet':
+            return `${initial + 1}rem`
+        case 'laptop':
+            return `${initial + 1.5}rem`
+        case 'desktop':
+            return `${initial + 2}rem`
+        default:
+            return `${initial}rem`
+    }
 }
 
 const utils = {
     capitalize,
-    changeImageSize,
-    changeImageProp,
-    changeImageArray,
+    slidePerPage,
+    sliderHeightPopular
 }
 
 export default utils

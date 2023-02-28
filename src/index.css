@@ -6,16 +6,25 @@
 
 @layer components{
   .page-title{
-    @apply font-bold mb-2 text-2xl
+    @apply font-bold text-lg mb-2
   }
-  .category{
+  .button{
     @apply w-fit h-fit flex items-center gap-1 rounded-full text-xs cursor-pointer not-italic no-underline pl-2 pr-3 pt-1 pb-1.5 laptop:pl-4 laptop:pr-5 laptop:pt-2 laptop:pb-2.5
   }
-  .category-inactive{
+  .button-inactive{
     @apply border-[1px] border-black text-black
   }
-  .category-active{
+  .button-active{
     @apply bg-black text-white border-[1px] border-black
+  }
+  .header-padding{
+    @apply px-6 pt-8 tablets:px-8 laptop:px-10 desktop:px-12 desktop:pt-10
+  }
+  .section-padding{
+    @apply px-6 tablets:px-8 laptop:px-10 desktop:px-12
+  }
+  .responsive-grid{
+    @apply grid-cols-2 gap-4 tablets:grid-cols-3 laptop:grid-cols-4
   }
 }
 

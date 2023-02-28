@@ -5,7 +5,7 @@ import services from '../services/api'
 import CardRandomRecipe from './cards/CardRandomRecipe'
 import utils from '../utils/utils'
 
-export default function Beverages() {
+export default function Beverages({ media }) {
     const [beverage, setBeverage] = useState([])
 
     const getBeveragess = async() => {
@@ -18,7 +18,7 @@ export default function Beverages() {
             const response = await services.getRandomRecipes(query)
             
             const { recipes } = response.data
-            localStorage.setItem('beverage', JSON.stringify(utils.changeImageArray(recipes)))
+            localStorage.setItem('beverage', JSON.stringify(recipes))
             setBeverage(response.data.recipes)
         }
     }
@@ -32,11 +32,11 @@ export default function Beverages() {
             <h1 className='page-title'>Top Beverages</h1>
             <Splide 
                 options={{
-                    perPage: 5,
+                    perPage: utils.slidePerPage(media, 2),
                     arrows: false,
                     pagination: false,
                     width: '100%',
-                    height: '10rem',
+                    height: utils.sliderHeightPopular(media, 6),
                     padding: { top: '1rem', bottom: '1rem' },
                     drag: 'free',
                     gap: '1.25rem',

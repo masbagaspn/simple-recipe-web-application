@@ -5,7 +5,7 @@ import services from '../services/api'
 import CardRandomRecipe from './cards/CardRandomRecipe'
 import utils from '../utils/utils'
 
-export default function Popular() {
+export default function Popular({ media }) {
     const [popular, setPopular] = useState([])
 
     const getPopulars = async() => {
@@ -18,11 +18,11 @@ export default function Popular() {
 
             const { recipes } = response.data
             
-            localStorage.setItem('popular', JSON.stringify(utils.changeImageArray(recipes)))
+            localStorage.setItem('popular', JSON.stringify(recipes))
             setPopular(response.data.recipes)
         }
     }
-
+    
     useEffect(() => {
         getPopulars()
     }, [])
@@ -32,11 +32,11 @@ export default function Popular() {
             <h1 className='page-title'>Popular Picks</h1>
             <Splide 
                 options={{
-                    perPage: 3,
+                    perPage: utils.slidePerPage(media, 1),
                     arrows: false,
                     pagination: false,
                     width: '100%',
-                    height: '12.5rem',
+                    height: utils.sliderHeightPopular(media, 8),
                     padding: { top: '1rem', bottom: '1rem' },
                     drag: 'free',
                     gap: '1.25rem',

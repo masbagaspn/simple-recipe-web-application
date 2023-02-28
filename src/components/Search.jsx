@@ -21,7 +21,7 @@ function Search() {
   return (
     <form 
       className={clsx(
-        'h-fit flex items-center gap-2.5 pl-4 pr-5 pt-1.5 pb-2 rounded-full text-xs cursor-pointer border-[1px] border-black',
+        'h-fit flex items-center gap-2.5 pl-4 pr-5 pt-1.5 pb-2 rounded-full text-xs cursor-pointer border-[1px] border-black bg-white',
         'mobile:w-full',
         'tablets:w-fit'
       )}
@@ -29,7 +29,7 @@ function Search() {
     >
         <HiOutlineSearch />
         <input 
-          className='text-sm outline-none'
+          className='text-sm outline-none w-full'
           placeholder='ex: Cookies'
           name='query'
           value={state.query}

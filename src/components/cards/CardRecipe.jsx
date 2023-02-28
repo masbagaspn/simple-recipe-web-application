@@ -6,13 +6,14 @@ function CardRecipe({ food }) {
   return (
     <NavLink to={`/recipes/${food.id}/information`}>
       <article className={clsx(
-        'relative w-full h-full rounded-md bg-white overflow-hidden'
+          'relative w-full h-full rounded-md bg-white overflow-hidden',
+          ''
         )}
       >
-          <div className={`w-full h-full flex items-center rounded-md overflow-hidden`}>
-              <img className='w-[120%] h-[120%] object-cover object-bottom' src={food.image} alt={food.title}/>
+          <div className={`w-full h-[8rem] flex items-center rounded-md overflow-hidden`}>
+              <img className='w-[120%] h-[150%] object-cover' src={food.image} alt={food.title}/>
           </div>
-          <h2 className='absolute w-full bottom-0 left-0 py-4 pl-4 pr-8 text-md tablets:text-sm laptop:text-md desktop:text-lg font-bold text-white z-20'>{food.title}</h2>
+          <h2 className='absolute w-full bottom-0 left-0 py-4 pl-4 pr-8 text-xs tablets:text-sm laptop:text-md font-bold text-white z-20'>{food.title}</h2>
           <div className='absolute top-0 w-full h-full bg-gradient-to-t from-black to-transparent opacity-50 z-10'/>
       </article>
     </NavLink>
