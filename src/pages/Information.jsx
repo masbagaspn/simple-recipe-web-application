@@ -39,7 +39,7 @@ function Information() {
         </div>
         <div className='w-full flex flex-col laptop:flex-row gap-6'>
             <h2 className='w-full laptop:w-1/4 h-fit pb-4 page-title border-b-2 laptop:border-0 border-black'>Ingredients</h2>
-            <ul className='w-full laptop:w-3/4 grid grid-cols-2 laptop:grid-cols-3 gap-2'>
+            <ul className='w-full laptop:w-3/4 grid grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-3 gap-2'>
                 {
                     information.extendedIngredients.map((ingredient, index) => (
                         <li key={index}>
@@ -53,7 +53,7 @@ function Information() {
         </div>
         <div className='w-full flex flex-col laptop:flex-row gap-6'>
             <h2 className='w-full laptop:w-1/4 h-fit pb-4 page-title border-b-2 laptop:border-0 border-black'>Instructions</h2>
-            <span className='w-full laptop:w-3/4 h-fit list-decimal' dangerouslySetInnerHTML={{ __html: information.instructions }} />
+            <span className='w-full laptop:w-3/4 h-fit' dangerouslySetInnerHTML={{ __html: information.instructions }} />
         </div>
     </section>
   )

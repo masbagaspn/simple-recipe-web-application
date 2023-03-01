@@ -32,9 +32,6 @@
   a {
     @apply underline underline-offset-2
   }
-  ol{
-    @apply list-decimal pl-4
-  }
 }
 
 html,
